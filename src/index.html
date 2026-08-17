@@ -1,387 +1,322 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/webp" href="images/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-  <title>manukeft</title>
-</head>
-
-<body>
-
-  <nav>
-    <div class="nav-inner">
-      <a href="#" class="nav-logo" onclick="showSection('home'); return false;">
-        <img src="images/queft-icon.png" alt="manukeft">
-      </a>
-      <button class="nav-hamburger" id="navHamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#" onclick="showSection('home'); return false;" data-section="home">Home</a></li>
-        <li><a href="#" onclick="showSection('shop'); return false;" data-section="shop">Shop</a></li>
-        <li><a href="#" onclick="showSection('gallery'); return false;" data-section="gallery">Gallery</a></li>
-        <li><a href="#" onclick="showSection('videos'); return false;" data-section="videos">Videos</a></li>
-        <li><a href="#" onclick="showSection('about'); return false;" data-section="about">About</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- home -->
-  <section id="home" class="active">
-
-    <!-- hero -->
-    <div class="hero-slider">
-      <div class="slides" id="slides">
-
-        <div class="slide active">
-          <img src="images/hero-1.jpg" alt="">
-          <div class="hero-caption">
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="images/hero-2.jpg" alt="">
-          <div class="hero-caption">
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="images/hero-3.jpg" alt="">
-          <div class="hero-caption">
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="images/hero-4.jpg" alt="">
-          <div class="hero-caption">
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="images/hero-5.jpg" alt="">
-          <div class="hero-caption">
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slider-dots" id="dots"></div>
-      </div>
-    </div>
-
-    <!-- home -->
-    <div class="home-previews">
-
-      <div class="preview-block">
-        <div class="preview-header">
-          <h2>Shop</h2>
-          <a href="#" onclick="showSection('shop'); return false;">Ver todo →</a>
-        </div>
-        <div class="shop-preview">
-          <div class="shop-card" onclick="showSection('shop')">
-            <div class="shop-card-img">
-              <img src="images/shop/df-1.jpg" alt="Doble Filo">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/webp" href="images/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js" defer></script>
+        <title>manukeft</title>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-inner">
+                <a href="#" class="nav-logo" onclick="showSection('home'); return false;"
+                    ><img src="images/queft-icon.png" alt="manukeft" /></a
+                ><button class="nav-hamburger" id="navHamburger"><span></span><span></span><span></span></button>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showSection('home'); return false;" data-section="home">Home</a></li>
+                    <li><a href="#" onclick="showSection('shop'); return false;" data-section="shop">Shop</a></li>
+                    <li>
+                        <a href="#" onclick="showSection('gallery'); return false;" data-section="gallery">Gallery</a>
+                    </li>
+                    <li><a href="#" onclick="showSection('videos'); return false;" data-section="videos">Videos</a></li>
+                    <li><a href="#" onclick="showSection('about'); return false;" data-section="about">About</a></li>
+                </ul>
             </div>
-            <div class="shop-card-info">
-              <p>Doble Filo</p>
-              <span>$20.000 ARS</span>
+        </nav>
+        <section id="home" class="active">
+            <div class="hero-slider">
+                <div class="slides" id="slides">
+                    <div class="slide active">
+                        <img src="images/hero-1.jpg" alt="" />
+                        <div class="hero-caption"><p></p></div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/hero-2.jpg" alt="" />
+                        <div class="hero-caption"><p></p></div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/hero-3.jpg" alt="" />
+                        <div class="hero-caption"><p></p></div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/hero-4.jpg" alt="" />
+                        <div class="hero-caption"><p></p></div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/hero-5.jpg" alt="" />
+                        <div class="hero-caption"><p></p></div>
+                    </div>
+                    <div class="slider-dots" id="dots"></div>
+                </div>
             </div>
-          </div>
+            <div class="home-previews">
+                <div class="preview-block">
+                    <div class="preview-header">
+                        <h2>Shop</h2>
+                        <a href="#" onclick="showSection('shop'); return false;">Ver todo →</a>
+                    </div>
+                    <div class="shop-preview">
+                        <div class="shop-card" onclick="showSection('shop')">
+                            <div class="shop-card-img"><img src="images/shop/df-1.jpg" alt="Doble Filo" /></div>
+                            <div class="shop-card-info">
+                                <p>Doble Filo</p>
+                                <span>$20.000 ARS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-header">
+                        <h2>Gallery</h2>
+                        <a href="#" onclick="showSection('gallery'); return false;">Ver archivo →</a>
+                    </div>
+                    <div class="gallery-preview">
+                        <div class="g-item" onclick="showSection('gallery')">
+                            <img src="images/gallery/new-york/ny-123.jpg" alt="New York" />
+                        </div>
+                        <div class="g-item" onclick="showSection('gallery')">
+                            <img src="images/gallery/baires/baires-1.jpg" alt="Baires" />
+                        </div>
+                        <div class="g-item" onclick="showSection('gallery')">
+                            <img src="images/gallery/graffiti/graff-banner.jpg" alt="Graffiti" />
+                        </div>
+                        <div class="g-item" onclick="showSection('gallery')">
+                            <img src="images/gallery/lifestyle/life-15.jpg" alt="Lifestyle" />
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-block">
+                    <div class="preview-header">
+                        <h2>Videos</h2>
+                        <a href="#" onclick="showSection('videos'); return false;">Ver todo →</a>
+                    </div>
+                    <div class="videos-preview">
+                        <a class="video-card" href="https://www.youtube.com/watch?v=72r8EARqe5k" target="_blank"
+                            ><img src="https://img.youtube.com/vi/72r8EARqe5k/maxresdefault.jpg" alt="" />
+                            <div class="video-play">▶</div></a
+                        ><a class="video-card" href="https://www.youtube.com/watch?v=NrrR40MMqts" target="_blank"
+                            ><img src="https://img.youtube.com/vi/NrrR40MMqts/maxresdefault.jpg" alt="" />
+                            <div class="video-play">▶</div></a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="shop">
+            <div class="inner">
+                <div class="product-page">
+                    <div class="product-gallery">
+                        <div class="main-img-wrap" id="mainImgWrap">
+                            <img class="main-img" id="mainImg" src="images/shop/df-1.jpg" alt="DOBLE FILO" /><button
+                                class="img-arrow img-arrow-prev"
+                                id="imgPrev"
+                            >
+                                ‹</button
+                            ><button class="img-arrow img-arrow-next" id="imgNext">›</button>
+                            <div class="zoom-lens" id="zoomLens"></div>
+                            <div class="zoom-result" id="zoomResult"></div>
+                        </div>
+                        <div class="thumb-row">
+                            <img class="thumb active" src="images/shop/df-1.jpg" alt="" /><img
+                                class="thumb"
+                                src="images/shop/df-2.jpg"
+                                alt=""
+                            /><img class="thumb" src="images/shop/df-3.jpg" alt="" /><img
+                                class="thumb"
+                                src="images/shop/thumbs/df-4.jpg"
+                                alt=""
+                            /><img class="thumb" src="images/shop/thumbs/df-5.jpg" alt="" /><img
+                                class="thumb"
+                                src="images/shop/thumbs/df-6.jpg"
+                                alt=""
+                            />
+                            <div class="thumb thumb-more" data-index="6">
+                                <img src="images/shop/thumbs/df-7.jpg" alt="" /><span>+10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h1>Doble<br />Filo</h1>
+                        <div class="price-block">
+                            <span class="price-ars">$20.000 ARS</span><span class="price-usd">/ USD 14</span>
+                        </div>
+                        <p class="desc">
+                            Mi primer fanzine. <br /><br />
+                            Graffitis que ya no existen, lugares que cambiaron e instantes que no vuelven. <br /><br />
+                            Primera edición de 25 ejemplares firmados y enumerados. <br /><br />
+                            BLUES - KEFT - MUSK
+                        </p>
+                        <div class="specs">
+                            <div class="spec-row"><span>Formato</span><span>A5</span></div>
+                            <div class="spec-row"><span>Páginas</span><span>60</span></div>
+                            <div class="spec-row"><span>Impresión</span><span>Láser · Papel ilustración</span></div>
+                            <div class="spec-row"><span>Tapa</span><span>300 g</span></div>
+                            <div class="spec-row"><span>Interior</span><span>150 g</span></div>
+                            <div class="spec-row highlight"><span>Incluye</span><span>+ Stickers de regalo</span></div>
+                        </div>
+                        <a
+                            class="btn-comprar"
+                            href="https://manukeft.mitiendanube.com/productos/doblefilo"
+                            target="_blank"
+                        >
+                            Comprar →
+                        </a>
+                        <p class="btn-note">Pago a través de Tienda Nube</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="gallery">
+            <div class="inner">
+                <div id="gallery-series">
+                    <div class="series-grid">
+                        <div class="series-card" onclick="openSerie('new-york')">
+                            <div class="series-thumb">
+                                <img src="images/gallery/new-york/ny-123.jpg" alt="New York" />
+                            </div>
+                            <div class="series-info">
+                                <span class="series-name">New York</span><span class="series-meta">2025</span>
+                            </div>
+                        </div>
+                        <div class="series-card" onclick="openSerie('graffiti')">
+                            <div class="series-thumb">
+                                <img src="images/gallery/graffiti/graff-banner.jpg" alt="Graffiti" />
+                            </div>
+                            <div class="series-info">
+                                <span class="series-name">Graffiti</span><span class="series-meta">Archivo</span>
+                            </div>
+                        </div>
+                        <div class="series-card" onclick="openSerie('lifestyle')">
+                            <div class="series-thumb">
+                                <img src="images/gallery/lifestyle/life-15.jpg" alt="Lifestyle" />
+                            </div>
+                            <div class="series-info">
+                                <span class="series-name">Lifestyle</span><span class="series-meta">Archivo</span>
+                            </div>
+                        </div>
+                        <div class="series-card" onclick="openSerie('baires')">
+                            <div class="series-thumb">
+                                <img src="images/gallery/baires/baires-1.jpg" alt="Baires" />
+                            </div>
+                            <div class="series-info">
+                                <span class="series-name">Baires</span><span class="series-meta">Archivo</span>
+                            </div>
+                        </div>
+                        <div class="series-card" onclick="openSerie('world-champion')">
+                            <div class="series-thumb">
+                                <img src="images/gallery/world-champion/wc-banner.jpg" alt="Champion" />
+                            </div>
+                            <div class="series-info">
+                                <span class="series-name">World Champion</span><span class="series-meta">2022</span>
+                            </div>
+                        </div>
+                        <div class="series-card" style="cursor: default">
+                            <div class="series-thumb" style="opacity: 0.2">
+                                <img src="images/gallery/perros/perros-1.jpg" alt="Perritos Dormilones" />
+                            </div>
+                            <div class="series-info"><span class="series-meta">Próximamente...</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="gallery-inner" class="gallery-inner-hidden">
+                    <div class="section-header">
+                        <h2 id="serie-title">Serie</h2>
+                        <a href="#" class="btn-volver" onclick="closeSerie(); return false;">← Volver</a>
+                    </div>
+                    <div class="serie-grid" id="serie-grid"></div>
+                </div>
+            </div>
+        </section>
+        <section id="videos">
+            <div class="inner">
+                <div class="videos-grid">
+                    <a class="video-card" href="https://www.youtube.com/watch?v=6cl-vQkj_gc" target="_blank"
+                        ><img src="https://img.youtube.com/vi/6cl-vQkj_gc/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=w5oBU1V0c8Y" target="_blank"
+                        ><img src="https://img.youtube.com/vi/w5oBU1V0c8Y/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=veQlvLM4YgU" target="_blank"
+                        ><img src="https://img.youtube.com/vi/veQlvLM4YgU/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=V_JFxImZWVQ" target="_blank"
+                        ><img src="https://img.youtube.com/vi/V_JFxImZWVQ/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=NrrR40MMqts" target="_blank"
+                        ><img src="https://img.youtube.com/vi/NrrR40MMqts/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=iu0l3ESiChw" target="_blank"
+                        ><img src="https://img.youtube.com/vi/iu0l3ESiChw/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=_v5N-fUAhp4" target="_blank"
+                        ><img src="https://img.youtube.com/vi/_v5N-fUAhp4/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=zBobBpiZ7k8" target="_blank"
+                        ><img src="https://img.youtube.com/vi/zBobBpiZ7k8/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=72r8EARqe5k" target="_blank"
+                        ><img src="https://img.youtube.com/vi/72r8EARqe5k/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=XH1HvsyEcC8" target="_blank"
+                        ><img src="https://img.youtube.com/vi/XH1HvsyEcC8/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=qPXOla25juk" target="_blank"
+                        ><img src="https://img.youtube.com/vi/qPXOla25juk/maxresdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    ><a class="video-card" href="https://www.youtube.com/watch?v=1Uzjvgh1MtY" target="_blank"
+                        ><img src="https://img.youtube.com/vi/1Uzjvgh1MtY/hqdefault.jpg" alt="" />
+                        <div class="video-play">▶</div></a
+                    >
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <div class="inner">
+                <div class="about-grid">
+                    <div>
+                        <h3>manukeft</h3>
+                        <p>
+                            Estudia Artes Visuales y trabaja principalmente con el graffiti, la fotografía, el video y
+                            el arte impreso. <br /><br /><b>Buenos Aires, Argentina.</b>
+                        </p>
+                    </div>
+                    <div>
+                        <h3>Contacto</h3>
+                        <div class="contact-links">
+                            <a href="mailto:manukeft@gmail.com"><span>Email</span> manukeft@gmail.com </a
+                            ><a href="https://instagram.com/manukeft" target="_blank"
+                                ><span>Instagram</span> @manukeft </a
+                            ><a href="https://youtube.com/@manukeft" target="_blank"><span>YouTube</span> @manukeft </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-inner">
+                <small>2026 © manukeft</small>
+                <div class="footer-links">
+                    <a href="https://instagram.com/manukeft" target="_blank">Instagram</a
+                    ><a href="https://youtube.com/@manukeft" target="_blank">YouTube</a
+                    ><a href="https://manukeft.mitiendanube.com" target="_blank">Shop</a>
+                </div>
+            </div>
+        </footer>
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+            <button class="lightbox-close" id="lightboxClose">✕</button
+            ><button class="lightbox-arrow lightbox-prev" id="lightboxPrev">‹</button
+            ><img class="lightbox-img" id="lightboxImg" src="" alt="" /><button
+                class="lightbox-arrow lightbox-next"
+                id="lightboxNext"
+            >
+                ›
+            </button>
         </div>
-      </div>
-
-      <div class="preview-block">
-        <div class="preview-header">
-          <h2>Gallery</h2>
-          <a href="#" onclick="showSection('gallery'); return false;">Ver archivo →</a>
-        </div>
-        <div class="gallery-preview">
-          <div class="g-item" onclick="showSection('gallery')">
-            <img src="images/gallery/new-york/ny-123.jpg" alt="New York">
-          </div>
-          <div class="g-item" onclick="showSection('gallery')">
-            <img src="images/gallery/baires/baires-1.jpg" alt="Baires">
-          </div>
-          <div class="g-item" onclick="showSection('gallery')">
-            <img src="images/gallery/graffiti/graff-banner.jpg" alt="Graffiti">
-          </div>
-          <div class="g-item" onclick="showSection('gallery')">
-            <img src="images/gallery/lifestyle/life-15.jpg" alt="Lifestyle">
-          </div>
-        </div>
-      </div>
-
-      <!-- videos -->
-      <div class="preview-block">
-        <div class="preview-header">
-          <h2>Videos</h2>
-          <a href="#" onclick="showSection('videos'); return false;">Ver todo →</a>
-        </div>
-        <div class="videos-preview">
-          <a class="video-card" href="https://www.youtube.com/watch?v=72r8EARqe5k" target="_blank">
-            <img src="https://img.youtube.com/vi/72r8EARqe5k/maxresdefault.jpg" alt="">
-            <div class="video-play">▶</div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=NrrR40MMqts" target="_blank">
-            <img src="https://img.youtube.com/vi/NrrR40MMqts/maxresdefault.jpg" alt="">
-            <div class="video-play">▶</div>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- shop -->
-  <section id="shop">
-    <div class="inner">
-      <div class="product-page">
-        <div class="product-gallery">
-          <div class="main-img-wrap" id="mainImgWrap">
-            <img class="main-img" id="mainImg" src="images/shop/df-1.jpg" alt="DOBLE FILO">
-            <button class="img-arrow img-arrow-prev" id="imgPrev">‹</button>
-            <button class="img-arrow img-arrow-next" id="imgNext">›</button>
-            <div class="zoom-lens" id="zoomLens"></div>
-            <div class="zoom-result" id="zoomResult"></div>
-          </div>
-          <div class="thumb-row">
-            <img class="thumb active" src="images/shop/df-1.jpg" alt="">
-            <img class="thumb" src="images/shop/df-2.jpg" alt="">
-            <img class="thumb" src="images/shop/df-3.jpg" alt="">
-            <img class="thumb" src="images/shop/thumbs/df-4.jpg" alt="">
-            <img class="thumb" src="images/shop/thumbs/df-5.jpg" alt="">
-            <img class="thumb" src="images/shop/thumbs/df-6.jpg" alt="">
-            <div class="thumb thumb-more" data-index="6">
-              <img src="images/shop/thumbs/df-7.jpg" alt="">
-              <span>+10</span>
-            </div>
-          </div>
-        </div>
-        <div class="product-info">
-          <h1>Doble<br>Filo</h1>
-          <div class="price-block">
-            <span class="price-ars">$20.000 ARS</span>
-            <span class="price-usd">/ USD 14</span>
-          </div>
-          <p class="desc">
-            Mi primer fanzine. <br><br>
-            Graffitis que ya no existen, lugares que cambiaron e instantes que no vuelven. <br><br>
-            Primera edición de 25 ejemplares firmados y enumerados. <br><br>
-            BLUES - KEFT - MUSK
-          </p>
-          <div class="specs">
-            <div class="spec-row"><span>Formato</span><span>A5</span></div>
-            <div class="spec-row"><span>Páginas</span><span>60</span></div>
-            <div class="spec-row"><span>Impresión</span><span>Láser · Papel ilustración</span></div>
-            <div class="spec-row"><span>Tapa</span><span>300 g</span></div>
-            <div class="spec-row"><span>Interior</span><span>150 g</span></div>
-            <div class="spec-row highlight"><span>Incluye</span><span>+ Stickers de regalo</span></div>
-          </div>
-          <a class="btn-comprar" href="https://manukeft.mitiendanube.com/productos/doblefilo" target="_blank">
-            Comprar →
-          </a>
-          <p class="btn-note">Pago a través de Tienda Nube</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- gallery -->
-  <section id="gallery">
-    <div class="inner">
-      <div id="gallery-series">
-        <div class="series-grid">
-
-          <div class="series-card" onclick="openSerie('new-york')">
-            <div class="series-thumb">
-              <img src="images/gallery/new-york/ny-123.jpg" alt="New York">
-            </div>
-            <div class="series-info">
-              <span class="series-name">New York</span>
-              <span class="series-meta">2025</span>
-            </div>
-          </div>
-
-          <div class="series-card" onclick="openSerie('graffiti')">
-            <div class="series-thumb">
-              <img src="images/gallery/graffiti/graff-banner.jpg" alt="Graffiti">
-            </div>
-            <div class="series-info">
-              <span class="series-name">Graffiti</span>
-              <span class="series-meta">Archivo</span>
-            </div>
-          </div>
-
-          <div class="series-card" onclick="openSerie('lifestyle')">
-            <div class="series-thumb">
-              <img src="images/gallery/lifestyle/life-15.jpg" alt="Lifestyle">
-            </div>
-            <div class="series-info">
-              <span class="series-name">Lifestyle</span>
-              <span class="series-meta">Archivo</span>
-            </div>
-          </div>
-
-          <div class="series-card" onclick="openSerie('baires')">
-            <div class="series-thumb">
-              <img src="images/gallery/baires/baires-1.jpg" alt="Baires">
-            </div>
-            <div class="series-info">
-              <span class="series-name">Baires</span>
-              <span class="series-meta">Archivo</span>
-            </div>
-          </div>
-
-          <div class="series-card" onclick="openSerie('world-champion')">
-            <div class="series-thumb">
-              <img src="images/gallery/world-champion/wc-banner.jpg" alt="Champion">
-            </div>
-            <div class="series-info">
-              <span class="series-name">World Champion</span>
-              <span class="series-meta">2022</span>
-            </div>
-          </div>
-
-          <div class="series-card" style="cursor: default;">
-            <div class="series-thumb" style="opacity: 0.2;">
-              <img src="images/gallery/perros/perros-1.jpg" alt="Perritos Dormilones">
-            </div>
-            <div class="series-info">
-              <span class="series-meta">Próximamente...</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- serie -->
-      <div id="gallery-inner" class="gallery-inner-hidden">
-        <div class="section-header">
-          <h2 id="serie-title">Serie</h2>
-          <a href="#" class="btn-volver" onclick="closeSerie(); return false;">← Volver</a>
-        </div>
-        <div class="serie-grid" id="serie-grid"></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- videos -->
-  <section id="videos">
-    <div class="inner">
-      <div class="videos-grid">
-        <a class="video-card" href="https://www.youtube.com/watch?v=6cl-vQkj_gc" target="_blank">
-          <img src="https://img.youtube.com/vi/6cl-vQkj_gc/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=w5oBU1V0c8Y" target="_blank">
-          <img src="https://img.youtube.com/vi/w5oBU1V0c8Y/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=veQlvLM4YgU" target="_blank">
-          <img src="https://img.youtube.com/vi/veQlvLM4YgU/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=V_JFxImZWVQ" target="_blank">
-          <img src="https://img.youtube.com/vi/V_JFxImZWVQ/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=NrrR40MMqts" target="_blank">
-          <img src="https://img.youtube.com/vi/NrrR40MMqts/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=iu0l3ESiChw" target="_blank">
-          <img src="https://img.youtube.com/vi/iu0l3ESiChw/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=_v5N-fUAhp4" target="_blank">
-          <img src="https://img.youtube.com/vi/_v5N-fUAhp4/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=zBobBpiZ7k8" target="_blank">
-          <img src="https://img.youtube.com/vi/zBobBpiZ7k8/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=72r8EARqe5k" target="_blank">
-          <img src="https://img.youtube.com/vi/72r8EARqe5k/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=XH1HvsyEcC8" target="_blank">
-          <img src="https://img.youtube.com/vi/XH1HvsyEcC8/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=qPXOla25juk" target="_blank">
-          <img src="https://img.youtube.com/vi/qPXOla25juk/maxresdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-        <a class="video-card" href="https://www.youtube.com/watch?v=1Uzjvgh1MtY" target="_blank">
-          <img src="https://img.youtube.com/vi/1Uzjvgh1MtY/hqdefault.jpg" alt="">
-          <div class="video-play">▶</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- about -->
-  <section id="about">
-    <div class="inner">
-      <div class="about-grid">
-        <div>
-          <h3>manukeft</h3>
-          <p>
-            Estudia Artes Visuales y trabaja principalmente con el graffiti, la fotografía, el video y el arte impreso.
-            <br><br> <b>Buenos Aires, Argentina.</b>
-          </p>
-        </div>
-        <div>
-          <h3>Contacto</h3>
-          <div class="contact-links">
-            <a href="mailto:manukeft@gmail.com">
-              <span>Email</span> manukeft@gmail.com
-            </a>
-
-            <a href="https://instagram.com/manukeft" target="_blank">
-              <span>Instagram</span> @manukeft
-            </a>
-
-            <a href="https://youtube.com/@manukeft" target="_blank">
-              <span>YouTube</span> @manukeft
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-inner">
-      <small>2026 © manukeft</small>
-      <div class="footer-links">
-        <a href="https://instagram.com/manukeft" target="_blank">Instagram</a>
-        <a href="https://youtube.com/@manukeft" target="_blank">YouTube</a>
-        <a href="https://manukeft.mitiendanube.com" target="_blank">Shop</a>
-      </div>
-    </div>
-  </footer>
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-    <button class="lightbox-close" id="lightboxClose">✕</button>
-    <button class="lightbox-arrow lightbox-prev" id="lightboxPrev">‹</button>
-    <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    <button class="lightbox-arrow lightbox-next" id="lightboxNext">›</button>
-  </div>
-</body>
-
+    </body>
 </html>

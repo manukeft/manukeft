@@ -218,3 +218,18 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     hamburger.classList.remove('open');
   });
 });
+
+// deslizar lightbox
+let touchStartX = 0;
+
+lightbox.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+});
+
+lightbox.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) document.getElementById('lightboxNext').click();
+    else document.getElementById('lightboxPrev').click();
+  }
+});
