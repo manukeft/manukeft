@@ -140,13 +140,13 @@ const series = {
   },
   'graffiti': {
     title: 'Graffiti',
-    total: 65,
+    total: 67,
     prefix: 'images/gallery/graffiti/graff-',
     ext: '.jpg'
   },
   'lifestyle': {
     title: 'Lifestyle',
-    total: 64,
+    total: 70,
     prefix: 'images/gallery/lifestyle/life-',
     ext: '.jpg'
   },
@@ -158,7 +158,7 @@ const series = {
   },
   'baires': {
     title: 'Baires',
-    total: 16,
+    total: 17,
     prefix: 'images/gallery/baires/baires-',
     ext: '.jpg'
   },
