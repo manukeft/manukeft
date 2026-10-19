@@ -1,2 +1,6 @@
 # Local Netlify folder
 .netlify
+
+# Solo en mi compu, no se suben a GitHub
+CLAUDE.md
+src/
