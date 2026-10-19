@@ -83,7 +83,8 @@ function setActive(i) {
   activeIndex = (i + fullImgs.length) % fullImgs.length;
   mainImg.src = imgUrl(thumbImgs[activeIndex], 1200);
   thumbs.forEach(t => t.classList.remove('active'));
-  if (activeIndex < 6) thumbs[activeIndex].classList.add('active');
+  // de la foto 7 en adelante se marca el "+10"
+  thumbs[Math.min(activeIndex, 6)].classList.add('active');
 }
 
 thumbs.forEach((thumb, i) => {
@@ -97,25 +98,42 @@ thumbs.forEach((thumb, i) => {
 document.getElementById('imgPrev').addEventListener('click', () => setActive(activeIndex - 1));
 document.getElementById('imgNext').addEventListener('click', () => setActive(activeIndex + 1));
 
+// deslizar sobre la foto del shop para pasar de foto
+onSwipe(document.getElementById('mainImgWrap'), d => setActive(activeIndex + d));
+
 // lightbox
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 let lightboxImgs = [];
 let lightboxIndex = 0;
 
+const lightboxCounter = document.getElementById('lightboxCounter');
+
 function showLightboxImg() {
-  lightboxImg.src = imgUrl(lightboxImgs[lightboxIndex]);
+  const src = imgUrl(lightboxImgs[lightboxIndex]);
+  if (lightboxImg.getAttribute('src') !== src) {
+    lightbox.classList.add('loading');
+    lightboxImg.src = src;
+  }
+  lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxImgs.length}`;
+  // precarga la anterior y la siguiente: al pasar de foto ya están descargadas
+  const n = lightboxImgs.length;
+  [lightboxIndex + 1, lightboxIndex - 1].forEach(j => { new Image().src = imgUrl(lightboxImgs[(j + n) % n]); });
 }
+
+lightboxImg.addEventListener('load', () => lightbox.classList.remove('loading'));
 
 function showLightbox(imgs, i) {
   lightboxImgs = imgs;
   lightboxIndex = i;
   showLightboxImg();
   lightbox.classList.add('open');
+  document.documentElement.classList.add('lightbox-open');
 }
 
 function hideLightbox() {
   lightbox.classList.remove('open');
+  document.documentElement.classList.remove('lightbox-open');
 }
 
 // la URL sin el número de foto: /gallery/new-york/12 → /gallery/new-york
@@ -243,20 +261,22 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   });
 });
 
-// deslizar lightbox
-let touchStartX = 0;
+// deslizar: fn(1) hacia la izquierda (siguiente), fn(-1) hacia la derecha (anterior)
+function onSwipe(el, fn) {
+  let x0 = null;
+  el.addEventListener('touchstart', e => {
+    // con dos dedos es zoom, no deslizar
+    x0 = e.touches.length === 1 ? e.touches[0].clientX : null;
+  }, { passive: true });
+  el.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const diff = x0 - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) fn(diff > 0 ? 1 : -1);
+    x0 = null;
+  });
+}
 
-lightbox.addEventListener('touchstart', e => {
-  touchStartX = e.touches[0].clientX;
-});
-
-lightbox.addEventListener('touchend', e => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) document.getElementById('lightboxNext').click();
-    else document.getElementById('lightboxPrev').click();
-  }
-});
+onSwipe(lightbox, stepLightbox);
 
 // rutas: cada sección tiene su URL (/shop, /gallery/new-york, /gallery/new-york/12)
 // y el historial del navegador (Atrás/Adelante, gestos del celular) la recorre

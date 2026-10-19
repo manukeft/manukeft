@@ -283,7 +283,8 @@ section.active {
 }
 .main-img-wrap {
     width: 100%;
-    aspect-ratio: 3/4;
+    /* misma proporción que las fotos del producto (1200x1500): no se recortan */
+    aspect-ratio: 4/5;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -310,6 +311,15 @@ section.active {
     opacity: 0;
     transition: opacity 0.15s;
     z-index: 2;
+}
+/* pantallas táctiles: no hay hover, las flechas se ven siempre */
+@media (hover: none) {
+    .img-arrow {
+        opacity: 1;
+        font-size: 18px;
+        padding: 10px 12px;
+        background: rgb(0 0 0 / 0.3);
+    }
 }
 .img-arrow-prev {
     left: 8px;
@@ -463,7 +473,7 @@ section.active {
 .lightbox-backdrop {
     position: absolute;
     inset: 0;
-    background: rgb(0 0 0 / 0.92);
+    background: rgb(0 0 0 / 0.96);
 }
 .lightbox-img {
     position: relative;
@@ -471,6 +481,28 @@ section.active {
     max-height: 90vh;
     object-fit: contain;
     z-index: 1;
+    transition: opacity 0.2s;
+}
+/* mientras carga la foto siguiente, la actual se atenúa */
+.lightbox.loading .lightbox-img {
+    opacity: 0.3;
+}
+.lightbox-counter {
+    position: absolute;
+    top: 30px;
+    left: 32px;
+    z-index: 2;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgb(255 255 255 / 0.6);
+}
+/* con el lightbox abierto, la página de atrás no scrollea */
+html.lightbox-open,
+html.lightbox-open body {
+    overflow: hidden;
+}
+.lightbox {
+    overscroll-behavior: contain;
 }
 .lightbox-close {
     position: absolute;
@@ -834,9 +866,6 @@ a.shop-card {
         border-right: none;
         border-bottom: 1px solid var(--border);
     }
-    .main-img-wrap {
-        aspect-ratio: 4/3;
-    }
     .product-info {
         padding: 24px 20px;
     }
@@ -865,20 +894,29 @@ a.shop-card {
     .footer-inner {
         padding: 16px 20px;
     }
+    /* flechas abajo, más separadas y con más área para tocar */
     .lightbox-prev {
-        left: 108px;
+        left: 15%;
     }
     .lightbox-next {
-        right: 108px;
+        right: 15%;
     }
     .lightbox-arrow {
-        font-size: 30px;
-        padding: 1px 1px;
+        font-size: 36px;
+        padding: 12px 24px;
         background: none;
-        top: 85%;
+        top: auto;
+        bottom: 24px;
+        transform: none;
+        opacity: 0.8;
     }
     .lightbox-close {
         top: 12px;
         right: 16px;
+        padding: 8px;
+    }
+    .lightbox-counter {
+        top: 24px;
+        left: 20px;
     }
 }
