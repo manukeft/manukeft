@@ -37,7 +37,18 @@ function goTo(n) {
   document.querySelectorAll('.dot')[current].classList.add('active');
 }
 
-setInterval(() => goTo(current + 1), 4000);
+// avanza solo cada 4s, salvo: mouse encima, fuera de la home, pestaña oculta,
+// o si la persona activó "reducir movimiento" en su dispositivo
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+let heroHover = false;
+const slidesEl = document.getElementById('slides');
+slidesEl.addEventListener('mouseenter', () => { heroHover = true; });
+slidesEl.addEventListener('mouseleave', () => { heroHover = false; });
+
+setInterval(() => {
+  const onHome = document.getElementById('home').classList.contains('active');
+  if (onHome && !heroHover && !document.hidden && !reduceMotion.matches) goTo(current + 1);
+}, 4000);
 
 // shop
 const fullImgs = [
@@ -246,23 +257,56 @@ function buildImgs(serie) {
 
 let currentSerieImgs = [];
 
-function openSerie(id) {
+// proporción (ancho/alto) de cada foto, generada con: node tools/image-sizes.js
+let sizesPromise = null;
+function getSizes() {
+  sizesPromise ??= fetch('/images/gallery/sizes.json').then(r => r.json()).catch(() => ({}));
+  return sizesPromise;
+}
+
+const mobileQuery = matchMedia('(max-width: 768px)');
+
+// reparte las fotos en columnas parejas: cada foto va a la columna más corta
+async function buildSerieGrid(id) {
   const serie = series[id];
-  currentSerieImgs = buildImgs(serie);
-  document.getElementById('serie-title').textContent = serie.title;
-  const grid = document.getElementById('serie-grid');
-  const cols = window.innerWidth <= 768 ? 3 : 5;
-  const columns = Array.from({ length: cols }, () => []);
-  currentSerieImgs.forEach((src, i) => columns[i % cols].push({ src, i }));
-  grid.innerHTML = columns.map(col =>
-    `<div class="serie-col">${col.map(({ src, i }) =>
-      `<img src="${imgUrl(src, 600)}" loading="lazy" decoding="async" alt="${serie.title} — foto ${i + 1}" role="button" tabindex="0" data-i="${i}">`
-    ).join('')}</div>`
-  ).join('');
+  const ratios = (await getSizes())[id] || [];
+  if (currentSerie !== id) return; // se cambió de serie mientras cargaba
+  const cols = Array.from({ length: mobileQuery.matches ? 3 : 5 }, () => {
+    const col = document.createElement('div');
+    col.className = 'serie-col';
+    return col;
+  });
+  const heights = cols.map(() => 0);
+  currentSerieImgs.forEach((src, i) => {
+    const ratio = ratios[i] || 0.75; // si falta en sizes.json, se estima vertical
+    const img = document.createElement('img');
+    img.src = imgUrl(src, 600);
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.alt = `${serie.title} — foto ${i + 1}`;
+    img.setAttribute('role', 'button');
+    img.tabIndex = 0;
+    img.dataset.i = i;
+    img.style.aspectRatio = ratio; // reserva el lugar exacto antes de que cargue
+    const shortest = heights.indexOf(Math.min(...heights));
+    cols[shortest].appendChild(img);
+    heights[shortest] += 1 / ratio; // alto relativo: todas las columnas tienen el mismo ancho
+  });
+  document.getElementById('serie-grid').replaceChildren(...cols);
+}
+
+function openSerie(id) {
+  currentSerieImgs = buildImgs(series[id]);
+  document.getElementById('serie-title').textContent = series[id].title;
+  document.getElementById('serie-grid').replaceChildren();
+  buildSerieGrid(id);
   document.getElementById('gallery-series').style.display = 'none';
   document.getElementById('gallery-inner').classList.remove('gallery-inner-hidden');
   window.scrollTo(0, 0);
 }
+
+// al rotar el celular o achicar la ventana, se rearman las columnas
+mobileQuery.addEventListener('change', () => { if (currentSerie) buildSerieGrid(currentSerie); });
 
 function closeSerie() {
   document.getElementById('gallery-series').style.display = 'block';
@@ -319,10 +363,7 @@ let currentSerie = null;
 function render() {
   const parts = location.pathname.split('/').filter(Boolean);
   let section = parts[0] || 'home';
-  if (!sections.includes(section)) {
-    history.replaceState(null, '', '/');
-    section = 'home';
-  }
+  if (!sections.includes(section)) section = 'notfound';
   const serie = section === 'gallery' && series[parts[1]] ? parts[1] : null;
   if (section === 'gallery' && parts[1] && !serie) history.replaceState(null, '', '/gallery');
   // número de foto: /shop/3 o /gallery/new-york/12
@@ -333,15 +374,17 @@ function render() {
     currentSection = section;
   }
   if (serie !== currentSerie) {
-    serie ? openSerie(serie) : closeSerie();
     currentSerie = serie;
+    serie ? openSerie(serie) : closeSerie();
   }
 
   const imgs = section === 'shop' ? fullImgs : serie ? currentSerieImgs : null;
   if (imgs && photo >= 1 && photo <= imgs.length) showLightbox(imgs, photo - 1);
   else hideLightbox();
 
-  const name = serie ? series[serie].title : document.querySelector(`.nav-links a[data-section=${section}]`).textContent;
+  const name = serie ? series[serie].title
+    : section === 'notfound' ? 'página no encontrada'
+    : document.querySelector(`.nav-links a[data-section=${section}]`).textContent;
   document.title = section === 'home' ? 'manukeft' : `${name.toLowerCase()} — manukeft`;
   // canonical: la URL de la sección sin el número de foto
   document.querySelector('link[rel=canonical]').href = 'https://manukeft.com' + (photo ? lightboxBase() : location.pathname);
