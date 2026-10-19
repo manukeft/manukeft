@@ -1,3 +1,6 @@
+# Imagen para compartir: hero-2 recortada a 1200x630 (el tamaño que esperan WhatsApp, X, etc.)
+/og-image.jpg    /.netlify/images?url=/images/hero-2.jpg&w=1200&h=630&fit=cover&fm=jpg    200
+
 # Cualquier URL que no sea un archivo real (/shop, /gallery/new-york/12...)
 # devuelve index.html con código 200; el JavaScript muestra la sección que corresponde.
 /*    /index.html    200

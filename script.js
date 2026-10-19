@@ -291,7 +291,9 @@ function render() {
   else hideLightbox();
 
   const name = serie ? series[serie].title : document.querySelector(`.nav-links a[data-section=${section}]`).textContent;
-  document.title = section === 'home' ? 'manukeft' : `${name} — manukeft`;
+  document.title = section === 'home' ? 'manukeft' : `${name.toLowerCase()} — manukeft`;
+  // canonical: la URL de la sección sin el número de foto
+  document.querySelector('link[rel=canonical]').href = 'https://manukeft.com' + (photo ? lightboxBase() : location.pathname);
 }
 
 // pushState suma un paso al historial con la nueva URL, sin recargar la página
