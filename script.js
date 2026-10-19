@@ -22,6 +22,9 @@ let current = 0;
 slides.forEach((_, i) => {
   const d = document.createElement('div');
   d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.setAttribute('role', 'button');
+  d.tabIndex = 0;
+  d.setAttribute('aria-label', `Foto ${i + 1}`);
   d.addEventListener('click', () => goTo(i));
   dotsContainer.appendChild(d);
 });
@@ -82,6 +85,7 @@ const thumbs = document.querySelectorAll('.thumb');
 function setActive(i) {
   activeIndex = (i + fullImgs.length) % fullImgs.length;
   mainImg.src = imgUrl(thumbImgs[activeIndex], 1200);
+  mainImg.alt = `Doble Filo — foto ${activeIndex + 1}`;
   thumbs.forEach(t => t.classList.remove('active'));
   // de la foto 7 en adelante se marca el "+10"
   thumbs[Math.min(activeIndex, 6)].classList.add('active');
@@ -116,6 +120,7 @@ function showLightboxImg() {
     lightboxImg.src = src;
   }
   lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxImgs.length}`;
+  lightboxImg.alt = `Foto ${lightboxIndex + 1} de ${lightboxImgs.length}`;
   // precarga la anterior y la siguiente: al pasar de foto ya están descargadas
   const n = lightboxImgs.length;
   [lightboxIndex + 1, lightboxIndex - 1].forEach(j => { new Image().src = imgUrl(lightboxImgs[(j + n) % n]); });
@@ -123,17 +128,26 @@ function showLightboxImg() {
 
 lightboxImg.addEventListener('load', () => lightbox.classList.remove('loading'));
 
+// con teclado: al abrir, el foco pasa al lightbox; al cerrar, vuelve a la foto que lo abrió
+let lightboxOpener = null;
+
 function showLightbox(imgs, i) {
   lightboxImgs = imgs;
   lightboxIndex = i;
   showLightboxImg();
-  lightbox.classList.add('open');
-  document.documentElement.classList.add('lightbox-open');
+  if (!lightbox.classList.contains('open')) {
+    lightboxOpener = document.activeElement;
+    lightbox.classList.add('open');
+    document.documentElement.classList.add('lightbox-open');
+    document.getElementById('lightboxClose').focus({ preventScroll: true });
+  }
 }
 
 function hideLightbox() {
+  if (!lightbox.classList.contains('open')) return;
   lightbox.classList.remove('open');
   document.documentElement.classList.remove('lightbox-open');
+  lightboxOpener?.focus({ preventScroll: true });
 }
 
 // la URL sin el número de foto: /gallery/new-york/12 → /gallery/new-york
@@ -169,6 +183,21 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
   if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+  // Tab da vueltas entre los botones del lightbox, no se escapa a la página de atrás
+  if (e.key === 'Tab') {
+    const btns = [...lightbox.querySelectorAll('button')];
+    const i = btns.indexOf(document.activeElement);
+    e.preventDefault();
+    btns[(i + (e.shiftKey ? -1 : 1) + btns.length) % btns.length].focus();
+  }
+});
+
+// elementos con role="button" que no son <button>: que respondan a Enter y Espacio
+document.addEventListener('keydown', e => {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[role=button]')) {
+    e.preventDefault();
+    e.target.click();
+  }
 });
 
 // series
@@ -227,7 +256,7 @@ function openSerie(id) {
   currentSerieImgs.forEach((src, i) => columns[i % cols].push({ src, i }));
   grid.innerHTML = columns.map(col =>
     `<div class="serie-col">${col.map(({ src, i }) =>
-      `<img src="${imgUrl(src, 600)}" loading="lazy" decoding="async" alt="" data-i="${i}">`
+      `<img src="${imgUrl(src, 600)}" loading="lazy" decoding="async" alt="${serie.title} — foto ${i + 1}" role="button" tabindex="0" data-i="${i}">`
     ).join('')}</div>`
   ).join('');
   document.getElementById('gallery-series').style.display = 'none';
@@ -249,16 +278,18 @@ document.getElementById('serie-grid').addEventListener('click', e => {
 const hamburger = document.getElementById('navHamburger');
 const navLinks = document.querySelector('.nav-links');
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open');
-});
+// aria-expanded / aria-label: los lectores de pantalla anuncian si el menú está abierto
+function setMenu(open) {
+  navLinks.classList.toggle('open', open);
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  hamburger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+}
+
+hamburger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
 
 document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
-  });
+  a.addEventListener('click', () => setMenu(false));
 });
 
 // deslizar: fn(1) hacia la izquierda (siguiente), fn(-1) hacia la derecha (anterior)

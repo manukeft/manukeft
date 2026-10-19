@@ -7,7 +7,8 @@
 :root {
     --bg: #0a0a0a;
     --fg: #f0f0f0;
-    --muted: #666;
+    /* gris de textos chicos: #808080 contrasta 5:1 con el fondo (mínimo legible WCAG: 4.5:1) */
+    --muted: #808080;
     --border: #1e1e1e;
     --max: 1440px;
 }
@@ -18,6 +19,20 @@ body {
     color: var(--fg);
     overflow-x: hidden;
     width: 100%;
+}
+/* recuadro visible al navegar con teclado (Tab); con mouse no aparece */
+:focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 2px;
+}
+/* oculto en pantalla pero lo leen Google y los lectores de pantalla */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 nav {
     position: fixed;
@@ -601,7 +616,7 @@ html.lightbox-open body {
     grid-template-columns: 1fr 1fr;
     gap: 80px;
 }
-.about-grid h3 {
+.about-grid h2 {
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.12em;
@@ -653,7 +668,7 @@ footer {
 }
 footer small {
     font-size: 10px;
-    color: #333;
+    color: var(--muted);
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -663,7 +678,7 @@ footer small {
 }
 .footer-links a {
     font-size: 10px;
-    color: #444;
+    color: var(--muted);
     text-decoration: none;
     letter-spacing: 0.08em;
     text-transform: uppercase;

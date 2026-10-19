@@ -34,8 +34,8 @@
     <nav>
         <div class="nav-inner"><a href="/" data-link class="nav-logo"><img
                     src="/images/queft-icon.png" alt="manukeft" /></a><button class="nav-hamburger"
-                id="navHamburger"><span></span><span></span><span></span></button>
-            <ul class="nav-links">
+                id="navHamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="/" data-link data-section="home">Home</a></li>
                 <li><a href="/shop" data-link data-section="shop">Shop</a></li>
                 <li><a href="/gallery" data-link data-section="gallery">Gallery</a></li>
@@ -44,30 +44,32 @@
             </ul>
         </div>
     </nav>
+    <main>
     <section id="home" class="active">
+        <h1 class="visually-hidden">manukeft</h1>
         <div class="hero-slider">
             <div class="slides" id="slides">
-                <div class="slide active"><img src="/.netlify/images?url=/images/hero-1.jpg" fetchpriority="high" alt="" />
+                <div class="slide active"><img src="/.netlify/images?url=/images/hero-1.jpg" fetchpriority="high" alt="Graffiti QUEFT en una pared de Nueva York, con el autor de pie frente a ella" />
                     <div class="hero-caption">
                         <p></p>
                     </div>
                 </div>
-                <div class="slide"><img src="/.netlify/images?url=/images/hero-2.jpg" alt="" />
+                <div class="slide"><img src="/.netlify/images?url=/images/hero-2.jpg" alt="Pintando el graffiti QUEFT en una pared de Nueva York" />
                     <div class="hero-caption">
                         <p></p>
                     </div>
                 </div>
-                <div class="slide"><img src="/.netlify/images?url=/images/hero-3.jpg" alt="" />
+                <div class="slide"><img src="/.netlify/images?url=/images/hero-3.jpg" alt="Retocando el graffiti QUEFT mientras pasa un peatón, Nueva York" />
                     <div class="hero-caption">
                         <p></p>
                     </div>
                 </div>
-                <div class="slide"><img src="/.netlify/images?url=/images/hero-4.jpg" alt="" />
+                <div class="slide"><img src="/.netlify/images?url=/images/hero-4.jpg" alt="Retocando la base del graffiti QUEFT, Nueva York" />
                     <div class="hero-caption">
                         <p></p>
                     </div>
                 </div>
-                <div class="slide"><img src="/.netlify/images?url=/images/hero-5.jpg" alt="" />
+                <div class="slide"><img src="/.netlify/images?url=/images/hero-5.jpg" alt="Terminando el graffiti QUEFT en Nueva York" />
                     <div class="hero-caption">
                         <p></p>
                     </div>
@@ -109,10 +111,10 @@
                     <h2>Videos</h2><a href="/videos" data-link>Ver todo →</a>
                 </div>
                 <div class="videos-preview"><a class="video-card" href="https://www.youtube.com/watch?v=72r8EARqe5k"
-                        target="_blank"><img src="https://img.youtube.com/vi/72r8EARqe5k/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                        <div class="video-play">▶</div>
-                    </a><a class="video-card" href="https://www.youtube.com/watch?v=NrrR40MMqts" target="_blank"><img src="https://img.youtube.com/vi/NrrR40MMqts/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                        <div class="video-play">▶</div>
+                        target="_blank"><img src="https://img.youtube.com/vi/72r8EARqe5k/maxresdefault.jpg" loading="lazy" decoding="async" alt="PULVERIZADOR DE BOTELLA (video en YouTube)" />
+                        <div class="video-play" aria-hidden="true">▶</div>
+                    </a><a class="video-card" href="https://www.youtube.com/watch?v=NrrR40MMqts" target="_blank"><img src="https://img.youtube.com/vi/NrrR40MMqts/maxresdefault.jpg" loading="lazy" decoding="async" alt="un montón de nada (pero todo al mismo tiempo) (video en YouTube)" />
+                        <div class="video-play" aria-hidden="true">▶</div>
                     </a></div>
             </div>
         </div>
@@ -122,17 +124,15 @@
             <div class="product-page">
                 <div class="product-gallery">
                     <div class="main-img-wrap" id="mainImgWrap"><img class="main-img" id="mainImg"
-                            src="/.netlify/images?url=/images/shop/df-1.jpg&w=1200" loading="lazy" decoding="async" alt="DOBLE FILO" /><button class="img-arrow img-arrow-prev"
-                            id="imgPrev"> ‹</button><button class="img-arrow img-arrow-next" id="imgNext">›</button>
-                        <div class="zoom-lens" id="zoomLens"></div>
-                        <div class="zoom-result" id="zoomResult"></div>
+                            src="/.netlify/images?url=/images/shop/df-1.jpg&w=1200" loading="lazy" decoding="async" alt="Doble Filo — foto 1" role="button" tabindex="0" aria-label="Ampliar foto" /><button class="img-arrow img-arrow-prev"
+                            id="imgPrev" aria-label="Foto anterior">‹</button><button class="img-arrow img-arrow-next" id="imgNext" aria-label="Foto siguiente">›</button>
                     </div>
-                    <div class="thumb-row"><img class="thumb active" src="/.netlify/images?url=/images/shop/df-1.jpg&w=300" loading="lazy" decoding="async" alt="" /><img
-                            class="thumb" src="/.netlify/images?url=/images/shop/df-2.jpg&w=300" loading="lazy" decoding="async" alt="" /><img class="thumb"
-                            src="/.netlify/images?url=/images/shop/df-3.jpg&w=300" loading="lazy" decoding="async" alt="" /><img class="thumb" src="/.netlify/images?url=/images/shop/thumbs/df-4.jpg&w=300" loading="lazy" decoding="async"
-                            alt="" /><img class="thumb" src="/.netlify/images?url=/images/shop/thumbs/df-5.jpg&w=300" loading="lazy" decoding="async" alt="" /><img class="thumb"
-                            src="/.netlify/images?url=/images/shop/thumbs/df-6.jpg&w=300" loading="lazy" decoding="async" alt="" />
-                        <div class="thumb thumb-more" data-index="6"><img src="/.netlify/images?url=/images/shop/thumbs/df-7.jpg&w=300" loading="lazy" decoding="async"
+                    <div class="thumb-row"><img class="thumb active" src="/.netlify/images?url=/images/shop/df-1.jpg&w=300" loading="lazy" decoding="async" alt="Doble Filo — foto 1" role="button" tabindex="0" /><img
+                            class="thumb" src="/.netlify/images?url=/images/shop/df-2.jpg&w=300" loading="lazy" decoding="async" alt="Doble Filo — foto 2" role="button" tabindex="0" /><img class="thumb"
+                            src="/.netlify/images?url=/images/shop/df-3.jpg&w=300" loading="lazy" decoding="async" alt="Doble Filo — foto 3" role="button" tabindex="0" /><img class="thumb" src="/.netlify/images?url=/images/shop/thumbs/df-4.jpg&w=300" loading="lazy" decoding="async"
+                            alt="Doble Filo — foto 4" role="button" tabindex="0" /><img class="thumb" src="/.netlify/images?url=/images/shop/thumbs/df-5.jpg&w=300" loading="lazy" decoding="async" alt="Doble Filo — foto 5" role="button" tabindex="0" /><img class="thumb"
+                            src="/.netlify/images?url=/images/shop/thumbs/df-6.jpg&w=300" loading="lazy" decoding="async" alt="Doble Filo — foto 6" role="button" tabindex="0" />
+                        <div class="thumb thumb-more" data-index="6" role="button" tabindex="0" aria-label="Ver más fotos"><img src="/.netlify/images?url=/images/shop/thumbs/df-7.jpg&w=300" loading="lazy" decoding="async"
                                 alt="" /><span>+10</span></div>
                     </div>
                 </div>
@@ -158,6 +158,7 @@
         </div>
     </section>
     <section id="gallery">
+        <h1 class="visually-hidden">gallery</h1>
         <div class="inner">
             <div id="gallery-series">
                 <div class="series-grid">
@@ -205,45 +206,47 @@
         </div>
     </section>
     <section id="videos">
+        <h1 class="visually-hidden">videos</h1>
         <div class="inner">
             <div class="videos-grid"><a class="video-card" href="https://www.youtube.com/watch?v=6cl-vQkj_gc"
-                    target="_blank"><img src="https://img.youtube.com/vi/6cl-vQkj_gc/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=w5oBU1V0c8Y" target="_blank"><img src="https://img.youtube.com/vi/w5oBU1V0c8Y/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=veQlvLM4YgU" target="_blank"><img src="https://img.youtube.com/vi/veQlvLM4YgU/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=V_JFxImZWVQ" target="_blank"><img src="https://img.youtube.com/vi/V_JFxImZWVQ/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=NrrR40MMqts" target="_blank"><img src="https://img.youtube.com/vi/NrrR40MMqts/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=iu0l3ESiChw" target="_blank"><img src="https://img.youtube.com/vi/iu0l3ESiChw/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=_v5N-fUAhp4" target="_blank"><img src="https://img.youtube.com/vi/_v5N-fUAhp4/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=zBobBpiZ7k8" target="_blank"><img src="https://img.youtube.com/vi/zBobBpiZ7k8/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=72r8EARqe5k" target="_blank"><img src="https://img.youtube.com/vi/72r8EARqe5k/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=XH1HvsyEcC8" target="_blank"><img src="https://img.youtube.com/vi/XH1HvsyEcC8/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=qPXOla25juk" target="_blank"><img src="https://img.youtube.com/vi/qPXOla25juk/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
-                </a><a class="video-card" href="https://www.youtube.com/watch?v=1Uzjvgh1MtY" target="_blank"><img src="https://img.youtube.com/vi/1Uzjvgh1MtY/hqdefault.jpg" loading="lazy" decoding="async" alt="" />
-                    <div class="video-play">▶</div>
+                    target="_blank"><img src="https://img.youtube.com/vi/6cl-vQkj_gc/maxresdefault.jpg" loading="lazy" decoding="async" alt="PLAYA DESIERTA (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=w5oBU1V0c8Y" target="_blank"><img src="https://img.youtube.com/vi/w5oBU1V0c8Y/maxresdefault.jpg" loading="lazy" decoding="async" alt="NUEVA YORK pt2 (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=veQlvLM4YgU" target="_blank"><img src="https://img.youtube.com/vi/veQlvLM4YgU/maxresdefault.jpg" loading="lazy" decoding="async" alt="GRAFFITI CARTOON (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=V_JFxImZWVQ" target="_blank"><img src="https://img.youtube.com/vi/V_JFxImZWVQ/maxresdefault.jpg" loading="lazy" decoding="async" alt="NUEVA YORK (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=NrrR40MMqts" target="_blank"><img src="https://img.youtube.com/vi/NrrR40MMqts/maxresdefault.jpg" loading="lazy" decoding="async" alt="un montón de nada (pero todo al mismo tiempo) (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=iu0l3ESiChw" target="_blank"><img src="https://img.youtube.com/vi/iu0l3ESiChw/maxresdefault.jpg" loading="lazy" decoding="async" alt="SOLO EN MADRUGADA (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=_v5N-fUAhp4" target="_blank"><img src="https://img.youtube.com/vi/_v5N-fUAhp4/maxresdefault.jpg" loading="lazy" decoding="async" alt="THROW UPS en el BARRIO (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=zBobBpiZ7k8" target="_blank"><img src="https://img.youtube.com/vi/zBobBpiZ7k8/maxresdefault.jpg" loading="lazy" decoding="async" alt="LETRAS COLORIDAS (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=72r8EARqe5k" target="_blank"><img src="https://img.youtube.com/vi/72r8EARqe5k/maxresdefault.jpg" loading="lazy" decoding="async" alt="PULVERIZADOR DE BOTELLA (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=XH1HvsyEcC8" target="_blank"><img src="https://img.youtube.com/vi/XH1HvsyEcC8/maxresdefault.jpg" loading="lazy" decoding="async" alt="1 LÁTEX 1 AEROSOL 3 THROW UPS (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=qPXOla25juk" target="_blank"><img src="https://img.youtube.com/vi/qPXOla25juk/maxresdefault.jpg" loading="lazy" decoding="async" alt="TREN DE CARGA (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
+                </a><a class="video-card" href="https://www.youtube.com/watch?v=1Uzjvgh1MtY" target="_blank"><img src="https://img.youtube.com/vi/1Uzjvgh1MtY/hqdefault.jpg" loading="lazy" decoding="async" alt="THROW UP en la CIUDAD (video en YouTube)" />
+                    <div class="video-play" aria-hidden="true">▶</div>
                 </a></div>
         </div>
     </section>
     <section id="about">
+        <h1 class="visually-hidden">about</h1>
         <div class="inner">
             <div class="about-grid">
                 <div>
-                    <h3>manukeft</h3>
+                    <h2>manukeft</h2>
                     <p> Estudia Artes Visuales y trabaja principalmente con el graffiti, la fotografía, el video y el
                         arte impreso. <br /><br /><b>Buenos Aires, Argentina.</b></p>
                 </div>
                 <div>
-                    <h3>Contacto</h3>
+                    <h2>Contacto</h2>
                     <div class="contact-links"><a href="mailto:manukeft@gmail.com"><span>Email</span> manukeft@gmail.com
                         </a><a href="https://instagram.com/manukeft" target="_blank"><span>Instagram</span> @manukeft
                         </a><a href="https://youtube.com/@manukeft" target="_blank"><span>YouTube</span> @manukeft </a>
@@ -252,6 +255,7 @@
             </div>
         </div>
     </section>
+    </main>
     <footer>
         <div class="footer-inner"><small>2026 © manukeft</small>
             <div class="footer-links"><a href="https://instagram.com/manukeft" target="_blank">Instagram</a><a
@@ -259,12 +263,12 @@
                     href="https://manukeft.mitiendanube.com" target="_blank">Shop</a></div>
         </div>
     </footer>
-    <div class="lightbox" id="lightbox">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de fotos">
         <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-        <div class="lightbox-counter" id="lightboxCounter"></div><button class="lightbox-close"
-            id="lightboxClose">✕</button><button class="lightbox-arrow lightbox-prev" id="lightboxPrev">‹</button><img
+        <div class="lightbox-counter" id="lightboxCounter" aria-live="polite"></div><button class="lightbox-close"
+            id="lightboxClose" aria-label="Cerrar">✕</button><button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Foto anterior">‹</button><img
             class="lightbox-img" id="lightboxImg" src="" alt="" /><button class="lightbox-arrow lightbox-next"
-            id="lightboxNext"> › </button>
+            id="lightboxNext" aria-label="Foto siguiente">›</button>
     </div>
 </body>
 
