@@ -1,3 +1,9 @@
+// imágenes: Netlify Image CDN convierte a WebP/AVIF y achica al vuelo
+// sin w = mismo tamaño, solo cambia el formato (para el lightbox)
+function imgUrl(src, w) {
+  return `/.netlify/images?url=/${src}` + (w ? `&w=${w}` : '');
+}
+
 // nav
 function showSection(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
@@ -75,7 +81,7 @@ const thumbs = document.querySelectorAll('.thumb');
 
 function setActive(i) {
   activeIndex = (i + fullImgs.length) % fullImgs.length;
-  mainImg.src = thumbImgs[activeIndex];
+  mainImg.src = imgUrl(thumbImgs[activeIndex], 1200);
   thumbs.forEach(t => t.classList.remove('active'));
   if (activeIndex < 6) thumbs[activeIndex].classList.add('active');
 }
@@ -97,10 +103,14 @@ const lightboxImg = document.getElementById('lightboxImg');
 let lightboxImgs = [];
 let lightboxIndex = 0;
 
+function showLightboxImg() {
+  lightboxImg.src = imgUrl(lightboxImgs[lightboxIndex]);
+}
+
 function openLightbox(imgs, i) {
   lightboxImgs = imgs;
   lightboxIndex = i;
-  lightboxImg.src = lightboxImgs[lightboxIndex];
+  showLightboxImg();
   lightbox.classList.add('open');
 }
 
@@ -115,12 +125,12 @@ document.getElementById('lightboxBackdrop').addEventListener('click', closeLight
 
 document.getElementById('lightboxPrev').addEventListener('click', () => {
   lightboxIndex = (lightboxIndex - 1 + lightboxImgs.length) % lightboxImgs.length;
-  lightboxImg.src = lightboxImgs[lightboxIndex];
+  showLightboxImg();
 });
 
 document.getElementById('lightboxNext').addEventListener('click', () => {
   lightboxIndex = (lightboxIndex + 1) % lightboxImgs.length;
-  lightboxImg.src = lightboxImgs[lightboxIndex];
+  showLightboxImg();
 });
 
 document.addEventListener('keydown', e => {
@@ -140,13 +150,13 @@ const series = {
   },
   'graffiti': {
     title: 'Graffiti',
-    total: 67,
+    total: 65,
     prefix: 'images/gallery/graffiti/graff-',
     ext: '.jpg'
   },
   'lifestyle': {
     title: 'Lifestyle',
-    total: 70,
+    total: 76,
     prefix: 'images/gallery/lifestyle/life-',
     ext: '.jpg'
   },
@@ -171,10 +181,7 @@ const series = {
 };
 
 function buildImgs(serie) {
-  return Array.from({ length: serie.total }, (_, i) => {
-    const n = String(i + 1).padStart(1, '0');
-    return `${serie.prefix}${n}${serie.ext}`;
-  });
+  return Array.from({ length: serie.total }, (_, i) => `${serie.prefix}${i + 1}${serie.ext}`);
 }
 
 let currentSerieImgs = [];
@@ -189,7 +196,7 @@ function openSerie(id) {
   currentSerieImgs.forEach((src, i) => columns[i % cols].push({ src, i }));
   grid.innerHTML = columns.map(col =>
     `<div class="serie-col">${col.map(({ src, i }) =>
-      `<img src="${src}" alt="" onclick="openLightbox(currentSerieImgs, ${i})">`
+      `<img src="${imgUrl(src, 600)}" loading="lazy" decoding="async" alt="" onclick="openLightbox(currentSerieImgs, ${i})">`
     ).join('')}</div>`
   ).join('');
   document.getElementById('gallery-series').style.display = 'none';

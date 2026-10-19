@@ -698,6 +698,9 @@ footer small {
 .serie-col img {
     width: 100%;
     height: auto;
+    /* 3/4 mientras carga (así el lazy loading funciona), después la proporción real */
+    aspect-ratio: auto 3 / 4;
+    background: #111;
     display: block;
     cursor: pointer;
     transition: opacity 0.2s;
