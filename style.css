@@ -1,4 +1,12 @@
-@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap);
+/* Inter alojada en el sitio (licencia SIL OFL): sin pedidos a Google, carga más rápido
+   un solo archivo "variable" con todos los grosores de 400 a 900 */
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: swap;
+    src: url(/fonts/inter-latin.woff2) format("woff2");
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -685,6 +693,13 @@ footer small {
     background: var(--bg);
 }
 /* cards que son links: sin azul ni subrayado */
+/* serie que todavía no está publicada */
+.series-card-soon {
+    cursor: default;
+}
+.series-card-soon .series-thumb {
+    opacity: 0.2;
+}
 a.series-card {
     display: block;
     color: inherit;
