@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- lista de páginas para Google; si sumás una serie nueva, agregala acá -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://manukeft.com/</loc></url>
-  <url><loc>https://manukeft.com/shop</loc></url>
-  <url><loc>https://manukeft.com/gallery</loc></url>
-  <url><loc>https://manukeft.com/gallery/new-york</loc></url>
-  <url><loc>https://manukeft.com/gallery/graffiti</loc></url>
-  <url><loc>https://manukeft.com/gallery/lifestyle</loc></url>
-  <url><loc>https://manukeft.com/gallery/baires</loc></url>
-  <url><loc>https://manukeft.com/gallery/world-champion</loc></url>
-  <url><loc>https://manukeft.com/videos</loc></url>
-  <url><loc>https://manukeft.com/about</loc></url>
-</urlset>
+<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://manukeft.com/</loc></url><url><loc>https://manukeft.com/shop</loc></url><url><loc>https://manukeft.com/gallery</loc></url><url><loc>https://manukeft.com/gallery/new-york</loc></url><url><loc>https://manukeft.com/gallery/graffiti</loc></url><url><loc>https://manukeft.com/gallery/lifestyle</loc></url><url><loc>https://manukeft.com/gallery/baires</loc></url><url><loc>https://manukeft.com/gallery/world-champion</loc></url><url><loc>https://manukeft.com/videos</loc></url><url><loc>https://manukeft.com/about</loc></url></urlset>

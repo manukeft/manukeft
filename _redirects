@@ -1,13 +1,8 @@
-# Imagen para compartir: hero-2 recortada a 1200x630 (el tamaño que esperan WhatsApp, X, etc.)
-/og-image.jpg    /.netlify/images?url=/images/hero-2.jpg&w=1200&h=630&fit=cover&fm=jpg    200
-
-# Las secciones del sitio devuelven index.html con código 200; el JavaScript muestra la que corresponde
-/shop          /index.html    200
-/shop/*        /index.html    200
-/gallery       /index.html    200
-/gallery/*     /index.html    200
-/videos        /index.html    200
-/about         /index.html    200
-
-# Cualquier otra URL: index.html con código 404 (el JavaScript muestra "página no encontrada")
-/*             /index.html    404
+/og-image.jpg /.netlify/images?url=/images/hero-2.jpg&w=1200&h=630&fit=cover&fm=jpg 200
+/shop /index.html 200
+/shop/* /index.html 200
+/gallery /index.html 200
+/gallery/* /index.html 200
+/videos /index.html 200
+/about /index.html 200
+/* /index.html 404

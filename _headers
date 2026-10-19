@@ -1,20 +1,10 @@
 /*
-  # nadie puede meter tu sitio adentro de otro (evita "clickjacking")
   X-Frame-Options: DENY
-  # el navegador no adivina tipos de archivo: un .jpg es un .jpg
   X-Content-Type-Options: nosniff
-  # a otros sitios solo les llega "vengo de manukeft.com", no la página exacta
   Referrer-Policy: strict-origin-when-cross-origin
-  # el sitio no usa cámara, micrófono, ubicación, pagos ni USB: quedan bloqueados
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  # una pestaña abierta desde otro sitio no puede controlar la tuya
   Cross-Origin-Opener-Policy: same-origin
-  # siempre HTTPS, también en subdominios (www)
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  # CSP: de dónde puede venir cada cosa. Solo de tu sitio, salvo las miniaturas de YouTube.
-  # Sin 'unsafe-inline': código o estilos escritos dentro del HTML no se ejecutan (frena inyecciones)
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://img.youtube.com data:; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
-
-# la fuente no cambia nunca: el navegador la guarda un año
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
