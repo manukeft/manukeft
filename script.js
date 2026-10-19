@@ -107,31 +107,44 @@ function showLightboxImg() {
   lightboxImg.src = imgUrl(lightboxImgs[lightboxIndex]);
 }
 
-function openLightbox(imgs, i) {
+function showLightbox(imgs, i) {
   lightboxImgs = imgs;
   lightboxIndex = i;
   showLightboxImg();
   lightbox.classList.add('open');
 }
 
-function closeLightbox() {
+function hideLightbox() {
   lightbox.classList.remove('open');
 }
 
-mainImg.addEventListener('click', () => openLightbox(fullImgs, activeIndex));
+// la URL sin el número de foto: /gallery/new-york/12 → /gallery/new-york
+function lightboxBase() {
+  return location.pathname.replace(/\/\d+$/, '');
+}
+
+function stepLightbox(d) {
+  lightboxIndex = (lightboxIndex + d + lightboxImgs.length) % lightboxImgs.length;
+  showLightboxImg();
+  // replaceState cambia la URL sin sumar un paso al historial: Atrás sigue cerrando el lightbox
+  history.replaceState(history.state, '', `${lightboxBase()}/${lightboxIndex + 1}`);
+}
+
+function closeLightbox() {
+  // si lo abrimos con un clic, Atrás deshace ese paso; si se entró directo por un link, se reemplaza la URL
+  if (history.state?.lightbox) history.back();
+  else {
+    history.replaceState(null, '', lightboxBase());
+    render();
+  }
+}
+
+mainImg.addEventListener('click', () => navigate(`/shop/${activeIndex + 1}`, { lightbox: true }));
 
 document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
 document.getElementById('lightboxBackdrop').addEventListener('click', closeLightbox);
-
-document.getElementById('lightboxPrev').addEventListener('click', () => {
-  lightboxIndex = (lightboxIndex - 1 + lightboxImgs.length) % lightboxImgs.length;
-  showLightboxImg();
-});
-
-document.getElementById('lightboxNext').addEventListener('click', () => {
-  lightboxIndex = (lightboxIndex + 1) % lightboxImgs.length;
-  showLightboxImg();
-});
+document.getElementById('lightboxPrev').addEventListener('click', () => stepLightbox(-1));
+document.getElementById('lightboxNext').addEventListener('click', () => stepLightbox(1));
 
 document.addEventListener('keydown', e => {
   if (!lightbox.classList.contains('open')) return;
@@ -196,7 +209,7 @@ function openSerie(id) {
   currentSerieImgs.forEach((src, i) => columns[i % cols].push({ src, i }));
   grid.innerHTML = columns.map(col =>
     `<div class="serie-col">${col.map(({ src, i }) =>
-      `<img src="${imgUrl(src, 600)}" loading="lazy" decoding="async" alt="" onclick="openLightbox(currentSerieImgs, ${i})">`
+      `<img src="${imgUrl(src, 600)}" loading="lazy" decoding="async" alt="" data-i="${i}">`
     ).join('')}</div>`
   ).join('');
   document.getElementById('gallery-series').style.display = 'none';
@@ -209,6 +222,10 @@ function closeSerie() {
   document.getElementById('gallery-inner').classList.add('gallery-inner-hidden');
   window.scrollTo(0, 0);
 }
+
+document.getElementById('serie-grid').addEventListener('click', e => {
+  if (e.target.dataset.i) navigate(`${lightboxBase()}/${+e.target.dataset.i + 1}`, { lightbox: true });
+});
 
 // menu
 const hamburger = document.getElementById('navHamburger');
@@ -240,3 +257,56 @@ lightbox.addEventListener('touchend', e => {
     else document.getElementById('lightboxPrev').click();
   }
 });
+
+// rutas: cada sección tiene su URL (/shop, /gallery/new-york, /gallery/new-york/12)
+// y el historial del navegador (Atrás/Adelante, gestos del celular) la recorre
+const sections = ['home', 'shop', 'gallery', 'videos', 'about'];
+let currentSection = null;
+let currentSerie = null;
+
+// dibuja la página según la URL actual
+function render() {
+  const parts = location.pathname.split('/').filter(Boolean);
+  let section = parts[0] || 'home';
+  if (!sections.includes(section)) {
+    history.replaceState(null, '', '/');
+    section = 'home';
+  }
+  const serie = section === 'gallery' && series[parts[1]] ? parts[1] : null;
+  if (section === 'gallery' && parts[1] && !serie) history.replaceState(null, '', '/gallery');
+  // número de foto: /shop/3 o /gallery/new-york/12
+  const photo = Number(section === 'shop' ? parts[1] : serie ? parts[2] : 0);
+
+  if (section !== currentSection) {
+    showSection(section);
+    currentSection = section;
+  }
+  if (serie !== currentSerie) {
+    serie ? openSerie(serie) : closeSerie();
+    currentSerie = serie;
+  }
+
+  const imgs = section === 'shop' ? fullImgs : serie ? currentSerieImgs : null;
+  if (imgs && photo >= 1 && photo <= imgs.length) showLightbox(imgs, photo - 1);
+  else hideLightbox();
+
+  const name = serie ? series[serie].title : document.querySelector(`.nav-links a[data-section=${section}]`).textContent;
+  document.title = section === 'home' ? 'manukeft' : `${name} — manukeft`;
+}
+
+// pushState suma un paso al historial con la nueva URL, sin recargar la página
+function navigate(path, state = null) {
+  history.pushState(state, '', path);
+  render();
+}
+
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-link]');
+  // ctrl/cmd + clic o clic del medio: que el navegador abra otra pestaña como siempre
+  if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+  e.preventDefault();
+  if (a.getAttribute('href') !== location.pathname) navigate(a.getAttribute('href'));
+});
+
+window.addEventListener('popstate', render);
+render();

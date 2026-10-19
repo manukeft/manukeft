@@ -4,28 +4,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="MyWebSite" />
-    <link rel="manifest" href="images/site.webmanifest" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <link rel="manifest" href="/images/site.webmanifest" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/script.js" defer></script>
     <meta property="og:site_name" content="manukeft">
     <title>manukeft</title>
 </head>
 
 <body>
     <nav>
-        <div class="nav-inner"><a href="#" class="nav-logo" onclick="showSection('home'); return false;"><img
-                    src="images/queft-icon.png" alt="manukeft" /></a><button class="nav-hamburger"
+        <div class="nav-inner"><a href="/" data-link class="nav-logo"><img
+                    src="/images/queft-icon.png" alt="manukeft" /></a><button class="nav-hamburger"
                 id="navHamburger"><span></span><span></span><span></span></button>
             <ul class="nav-links">
-                <li><a href="#" onclick="showSection('home'); return false;" data-section="home">Home</a></li>
-                <li><a href="#" onclick="showSection('shop'); return false;" data-section="shop">Shop</a></li>
-                <li><a href="#" onclick="showSection('gallery'); return false;" data-section="gallery">Gallery</a></li>
-                <li><a href="#" onclick="showSection('videos'); return false;" data-section="videos">Videos</a></li>
-                <li><a href="#" onclick="showSection('about'); return false;" data-section="about">About</a></li>
+                <li><a href="/" data-link data-section="home">Home</a></li>
+                <li><a href="/shop" data-link data-section="shop">Shop</a></li>
+                <li><a href="/gallery" data-link data-section="gallery">Gallery</a></li>
+                <li><a href="/videos" data-link data-section="videos">Videos</a></li>
+                <li><a href="/about" data-link data-section="about">About</a></li>
             </ul>
         </div>
     </nav>
@@ -63,35 +63,35 @@
         <div class="home-previews">
             <div class="preview-block">
                 <div class="preview-header">
-                    <h2>Shop</h2><a href="#" onclick="showSection('shop'); return false;">Ver todo →</a>
+                    <h2>Shop</h2><a href="/shop" data-link>Ver todo →</a>
                 </div>
                 <div class="shop-preview">
-                    <div class="shop-card" onclick="showSection('shop')">
+                    <a class="shop-card" href="/shop" data-link>
                         <div class="shop-card-img"><img src="/.netlify/images?url=/images/shop/df-1.jpg&w=800" loading="lazy" decoding="async" alt="Doble Filo" /></div>
                         <div class="shop-card-info">
                             <p>Doble Filo</p><span>$20.000 ARS</span>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="preview-block">
                 <div class="preview-header">
-                    <h2>Gallery</h2><a href="#" onclick="showSection('gallery'); return false;">Ver archivo →</a>
+                    <h2>Gallery</h2><a href="/gallery" data-link>Ver archivo →</a>
                 </div>
                 <div class="gallery-preview">
-                    <div class="g-item" onclick="showSection('gallery')"><img src="/.netlify/images?url=/images/gallery/new-york/ny-123.jpg&w=800" loading="lazy" decoding="async"
-                            alt="New York" /></div>
-                    <div class="g-item" onclick="showSection('gallery')"><img src="/.netlify/images?url=/images/gallery/baires/baires-1.jpg&w=800" loading="lazy" decoding="async"
-                            alt="Baires" /></div>
-                    <div class="g-item" onclick="showSection('gallery')"><img
-                            src="/.netlify/images?url=/images/gallery/graffiti/graff-banner.jpg&w=800" loading="lazy" decoding="async" alt="Graffiti" /></div>
-                    <div class="g-item" onclick="showSection('gallery')"><img src="/.netlify/images?url=/images/gallery/lifestyle/life-15.jpg&w=800" loading="lazy" decoding="async"
-                            alt="Lifestyle" /></div>
+                    <a class="g-item" href="/gallery/new-york" data-link><img src="/.netlify/images?url=/images/gallery/new-york/ny-123.jpg&w=800" loading="lazy" decoding="async"
+                            alt="New York" /></a>
+                    <a class="g-item" href="/gallery/baires" data-link><img src="/.netlify/images?url=/images/gallery/baires/baires-1.jpg&w=800" loading="lazy" decoding="async"
+                            alt="Baires" /></a>
+                    <a class="g-item" href="/gallery/graffiti" data-link><img
+                            src="/.netlify/images?url=/images/gallery/graffiti/graff-banner.jpg&w=800" loading="lazy" decoding="async" alt="Graffiti" /></a>
+                    <a class="g-item" href="/gallery/lifestyle" data-link><img src="/.netlify/images?url=/images/gallery/lifestyle/life-15.jpg&w=800" loading="lazy" decoding="async"
+                            alt="Lifestyle" /></a>
                 </div>
             </div>
             <div class="preview-block">
                 <div class="preview-header">
-                    <h2>Videos</h2><a href="#" onclick="showSection('videos'); return false;">Ver todo →</a>
+                    <h2>Videos</h2><a href="/videos" data-link>Ver todo →</a>
                 </div>
                 <div class="videos-preview"><a class="video-card" href="https://www.youtube.com/watch?v=72r8EARqe5k"
                         target="_blank"><img src="https://img.youtube.com/vi/72r8EARqe5k/maxresdefault.jpg" loading="lazy" decoding="async" alt="" />
@@ -146,34 +146,34 @@
         <div class="inner">
             <div id="gallery-series">
                 <div class="series-grid">
-                    <div class="series-card" onclick="openSerie('new-york')">
+                    <a class="series-card" href="/gallery/new-york" data-link>
                         <div class="series-thumb"><img src="/.netlify/images?url=/images/gallery/new-york/ny-123.jpg&w=800" loading="lazy" decoding="async" alt="New York" /></div>
                         <div class="series-info"><span class="series-name">New York</span><span
                                 class="series-meta">2025</span></div>
-                    </div>
-                    <div class="series-card" onclick="openSerie('graffiti')">
+                    </a>
+                    <a class="series-card" href="/gallery/graffiti" data-link>
                         <div class="series-thumb"><img src="/.netlify/images?url=/images/gallery/graffiti/graff-banner.jpg&w=800" loading="lazy" decoding="async" alt="Graffiti" />
                         </div>
                         <div class="series-info"><span class="series-name">Graffiti</span><span
                                 class="series-meta">Archivo</span></div>
-                    </div>
-                    <div class="series-card" onclick="openSerie('lifestyle')">
+                    </a>
+                    <a class="series-card" href="/gallery/lifestyle" data-link>
                         <div class="series-thumb"><img src="/.netlify/images?url=/images/gallery/lifestyle/life-15.jpg&w=800" loading="lazy" decoding="async" alt="Lifestyle" />
                         </div>
                         <div class="series-info"><span class="series-name">Lifestyle</span><span
                                 class="series-meta">Archivo</span></div>
-                    </div>
-                    <div class="series-card" onclick="openSerie('baires')">
+                    </a>
+                    <a class="series-card" href="/gallery/baires" data-link>
                         <div class="series-thumb"><img src="/.netlify/images?url=/images/gallery/baires/baires-1.jpg&w=800" loading="lazy" decoding="async" alt="Baires" /></div>
                         <div class="series-info"><span class="series-name">Baires</span><span
                                 class="series-meta">Archivo</span></div>
-                    </div>
-                    <div class="series-card" onclick="openSerie('world-champion')">
+                    </a>
+                    <a class="series-card" href="/gallery/world-champion" data-link>
                         <div class="series-thumb"><img src="/.netlify/images?url=/images/gallery/world-champion/wc-banner.jpg&w=800" loading="lazy" decoding="async"
                                 alt="Champion" /></div>
                         <div class="series-info"><span class="series-name">World Champion</span><span
                                 class="series-meta">2022</span></div>
-                    </div>
+                    </a>
                     <div class="series-card" style="cursor: default">
                         <div class="series-thumb" style="opacity: 0.2"><img src="/.netlify/images?url=/images/gallery/perros/perros-1.jpg&w=800" loading="lazy" decoding="async"
                                 alt="Perritos Dormilones" /></div>
@@ -183,8 +183,7 @@
             </div>
             <div id="gallery-inner" class="gallery-inner-hidden">
                 <div class="section-header">
-                    <h2 id="serie-title">Serie</h2><a href="#" class="btn-volver"
-                        onclick="closeSerie(); return false;">← Volver</a>
+                    <h2 id="serie-title">Serie</h2><a href="/gallery" class="btn-volver" data-link>← Volver</a>
                 </div>
                 <div class="serie-grid" id="serie-grid"></div>
             </div>
