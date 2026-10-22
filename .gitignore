@@ -4,3 +4,7 @@
 # Solo en mi compu, no se suben a GitHub
 CLAUDE.md
 src/
+
+# temporales del simulador local de Cloudflare
+.wrangler/
+node_modules/
